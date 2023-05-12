@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function ObteniendoPokemon () {
-    const [listaAutos, setListaAutos] = useState([]);
+    const [lista, setLista] = useState([]);
     const [imageUrl, setImageUrl] = useState(null);
 
     // fetch("https://pokeapi.co/api/v2/ability")
@@ -10,16 +10,19 @@ export default function ObteniendoPokemon () {
     //   .then((info) => console.log(info));
 
     useEffect(() => {
+
         // fetch data
         const dataFetch = async () => {
           const data = await (
-            await fetch("http://3.89.34.248:8080/api/auto/listar")
+            await fetch("https://pokeapi.co/api/v2/ability")
           ).json();    
           // set state when the data received
-          setListaAutos(data);
-          console.log(data);
-        };    
+          setLista(data.results);
+          console.log(data.results);
+        };
+
         dataFetch();
+      
       }, []);
 
     
@@ -34,9 +37,9 @@ export default function ObteniendoPokemon () {
     return (
         <div >
             <ul>
-                {listaAutos.map((auto) => (
-                <li key={auto.placa} value={auto.placa}>
-                    {auto.placa}
+                {lista.map((habilidad) => (
+                <li value={habilidad.name}>
+                    {habilidad.name}
                 </li>
                 ))}
             </ul>
