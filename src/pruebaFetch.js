@@ -80,7 +80,9 @@ export function ConsultandoPlaca () {
   return (
     <div >
         {respuesta.placa}
+        {respuesta.stringify()}
         algo
+        <p>Soy un textp de prueba</p>
     </div>
 );
 
