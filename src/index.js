@@ -184,10 +184,10 @@ root.render(
 
     {/* <FormularioUbicacion/> */}
     {/* <OptionLists/> */}
-    <ListaDinamicaForm/>
+    {/* <ListaDinamicaForm/>
     <ListaDinamicaForm2/>
-    <ObteniendoPokemon/>
-    {/* <ConsultandoPlaca/>  */}
+    <ObteniendoPokemon/> */}
+    <ConsultandoPlaca/> 
   </>  
 );
 

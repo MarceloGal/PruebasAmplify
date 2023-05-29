@@ -50,12 +50,20 @@ export default function ObteniendoPokemon () {
 export function ConsultandoPlaca () {
   
   const [respuesta, setRespuesta] = useState();
-  // https://mi-api.com/endpoint?placa=ABC-123
+
   useEffect(() => {
 
-    const dataFetch = async () => {
+    const dataFetch = async (placaBuscada) => {
       const data = await(
-        await fetch('http://3.89.34.248:8080/api/auto/buscar?placa=ABC-123')
+        await fetch('http://54.157.43.171:8080/api/auto/buscar',
+            {
+              method: "POST",
+              headers: {
+              "Content-Type": "application/json"
+              },
+              body: JSON.stringify({placa: placaBuscada})
+            }
+          )
         ).json();
         setRespuesta(data);
         console.log(data);
@@ -64,14 +72,14 @@ export function ConsultandoPlaca () {
       
     };    
 
-    dataFetch();
+    dataFetch("ABC-123");
     
 
   }, []);
 
   return (
     <div >
-        {/* {respuesta} */}
+        {respuesta.placa}
         algo
     </div>
 );
