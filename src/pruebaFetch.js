@@ -49,7 +49,7 @@ export default function ObteniendoPokemon () {
 
 export function ConsultandoPlaca () {
   
-  const [respuesta, setRespuesta] = useState();
+  const [consulta, setConsulta] = useState();
 
   useEffect(() => {
 
@@ -65,22 +65,27 @@ export function ConsultandoPlaca () {
             }
           )
         ).json();
-        setRespuesta(data);
-        console.log(data);
-      
-      // set state when the data received
-      
+        // console.log("Obtenido de fetch: "+data.stringify());
+        console.log("Obtenido de fetch: "+JSON.stringify(data));
+        setConsulta(data);
+        return data;
     };    
 
-    dataFetch("ABC-123");
+    var algo = dataFetch("ABC-123");
+    dataFetch("ABC-000");
+    // setConsulta(algo);
+    console.log("Obtenido de funcion: "+algo);
+    
     
 
   }, []);
 
   return (
     <div >
-        {respuesta.placa}
-        {respuesta.stringify()}
+        <p>
+          Obtenido de funcion: {JSON.stringify(consulta)}
+          {/* {consulta.placa} */}
+        </p> 
         algo
         <p>Soy un textp de prueba</p>
     </div>
